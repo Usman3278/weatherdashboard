@@ -1,0 +1,41 @@
+
+
+
+*{
+  box-sizing: border-box;
+  
+}
+
+body {
+  
+  font-size: 15px;
+  font-family: "Open Sans Condensed", sans-serif;
+  color: black;
+  
+}
+
+h3{
+  font-weight: bold;
+  text-align: center;
+  background-color: #9fc3e4;
+  
+}
+
+body {
+  font-family: sans-serif;
+  background-image: url(https://cdn.pixabay.com/photo/2015/06/08/15/06/lightning-801866__480.jpg);
+  background-size: cover;
+}
+.forecast{
+  
+  font-size: 0.8em;
+}
+span{
+  font-size: 1em;
+}
+li:hover{
+  background-color: gold;
+  text-decoration: underline;
+  border-radius: 2px;
+}
+
