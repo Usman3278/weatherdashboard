@@ -16,9 +16,9 @@ This app uses HTML, CSS (with Bootstrap elements), JavaScript, JQuery, and the O
 
 # ScreenShot
 
-<img width="1440" alt="Screen Shot 2020-12-30 at 09 46 05" src="https://user-images.githubusercontent.com/71395909/103359351-913d3b80-4ad9-11eb-8f95-8a9108a96e28.png">
+<img width="1440" alt="weatherdashboardforecast" src="https://user-images.githubusercontent.com/71395909/103375448-1a656a00-4afc-11eb-9c4e-c5266d6c2fa7.png">
 
-<img width="385" alt="CitySearchDisplay" src="https://user-images.githubusercontent.com/71395909/103359342-8d111e00-4ad9-11eb-8614-3b269aa7bf4f.png">
+<img width="635" alt="5dayforecast" src="https://user-images.githubusercontent.com/71395909/103375463-205b4b00-4afc-11eb-8967-13bd4b1d7fc9.png">
 
 
 
