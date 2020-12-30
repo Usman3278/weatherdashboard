@@ -1,97 +1,270 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-   
-    <div class="jumbotron container-fluid mt-2 text-center p-2" style="background-color:#020101 ;color: gold;">
-        <h1> <strong>Weather Dashboard</strong></h1>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4 bg-light">
-                <h4 class="pt-1"><strong>Search for a City:</strong></h4>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control"id="search-city" aria-label="City Search" aria-describedby="search-button">
-                    <div class="input-group-append">
-                        <button class=" btn bg-primary text-light" id="search-button"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-                
-                <!--Clear History-->
-                <button class=" btn btn-primary" type="button" id="clear-history">Clear history</button>
-                <ul class="list-group">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-                </ul>
-            </div>   
-            <div class="col-sm-8">
-                <div class="row ml-2 border border-dark rounded">
-                    <div class="col-sm-12" id="current-weather">
-                        <h3 class="city-name mb-1 mt-2 bolder" id="current-city"></h3>
-                        <p>Temperature:<span class="current" id="temperature"></span></p>
-                        <p>Humidity:<span class="current" id="humidity"></span></p> 
-                        <p>Wind Speed:<span class="current" id="wind-speed"></span></p>
-                        <p>UV index:<span class="current bg-danger rounded py-2 px-2 text-white" id="uv-index"></span></p> 
-                    </div>
-                </div>
-                <div class="col-sm-12" id ="future-weather">
-                    <h3>5-Day Forecast:</h3>
-                    <div class="row text-light">
-                        <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
-                            <p id="fDate0"></p>
-                            <p id="fImg0"></p>
-                            <p>Temp:<span id="fTemp0"></span></p>
-                            <p>Humidity:<span id="fHumidity0"></span></p>
-                        </div>
-                        <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
-                            <p id="fDate1"></p>
-                            <p id="fImg1"></p>
-                            <p>Temp:<span id="fTemp1"></span></p>
-                            <p>Humidity:<span id="fHumidity1"></span></p>
-                        </div>
-                        <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-                            <p id="fDate2"></p>
-                            <p id="fImg2"></p>
-                            <p>Temp:<span id="fTemp2"></span></p>
-                            <p>Humidity:<span id="fHumidity2"></span></p>
-                        </div>
-                        <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-                            <p id="fDate3"></p>
-                            <p id="fImg3"></p>
-                            <p>Temp:<span id="fTemp3"></span></p>
-                            <p>Humidity:<span id="fHumidity3"></span></p>
-                        </div>
-                        <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
-                            <p id="fDate4"></p>
-                            <p id="fImg4"></p>
-                            <p>Temp:<span id="fTemp4"></span></p>
-                            <p>Humidity:<span id="fHumidity4"></span></p>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>5 Day Forecast</title>
+  </head>
+  <body>
+    <!--***Banner Main title***-->
+    <div class="container-fluid banner">
+      <h1 class="banner-text">5 Day Forecast</h1>
+    </div>
+
+    <!--****Search bar****-->
+    <div class="container-fluid form-container">
+      <form class="row form">
+        <div class="col-auto">
+          <input
+            class="form-control search-bar"
+            type="search"
+            placeholder="Search for a city"
+            aria-label="Search"
+          />
         </div>
+        <div class="col-auto">
+          <button class="btn btn-secondary search-btn" type="submit">
+            Search
+          </button>
+        </div>
+      </form>
+      <div class="row history">
+        <div class="col-auto">
+          <p class='history-para'>Last Searched city was <span class="last-search"></span> .</p>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-secondary history-btn" type="submit">
+            clear history
+          </button>
+        </div>
+      </div>
     </div>
 
-     <!-- Footer -->
-     <div class="footer">
-        <p>
-          <span>
-            <em>DESIGN BY MUHAMMAD USMAN 2020</em>
-          </span>
-        </p>
+    <!--****Current Day weather forecast****-->
+    <div class="container-fluid temp-wrapper">
+      <p class="current-banner">
+        Find out how it currently feels like somewhere
+      </p>
+      <div class="row temp-item">
+        <p>Temperature <span id="temp"></span></p>
       </div>
-  
+      <div class="row temp-item">
+        <p>Humidity <span id="humidity"></span></p>
+      </div>
+      <div class="row temp-item">
+        <p>Windspeed <span id="wind"></span></p>
+      </div>
+      <div class="row temp-item">
+        <p>Weather <span id="weather"></span></p>
+      </div>
+      <div class="row temp-item">
+        <p>UV Index <span id="uvindex"></span></p>
+      </div>
+    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--****Next Five days Forecast****-->
+    <div class="container-fluid accordion-section">
+      <div class="row accordion-wrapper">
+        <div class="accordion" id="accordianExample">
+          <h3 class="accordian-banner"></h3>
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="clearfix">
+                <a
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  <span id="nextdt-1"> </span> <i class="fas fa-angle-down"></i>
+                </a>
+              </h2>
+            </div>
+            <div
+              id="collapseOne"
+              class="collapse"
+              aria-labelledby="headingOne"
+              data-parent="#accordianExample"
+            >
+              <div class="card-body">
+                <ul>
+                  <li>Temperature :<span id="day1-temp"></span></li>
+                  <li>Min-Temp :<span id="day1-min"></span></li>
+                  <li>Max-Temp :<span id="day1-max"></span></li>
+                  <li>Humidity :<span id="day1-humd"></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="clearfix mb-0">
+                <a
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  <span id="nextdt-2"> </span> <span> </span
+                  ><i class="fas fa-angle-down"></i>
+                </a>
+              </h2>
+            </div>
+            <div
+              id="collapseTwo"
+              class="collapse"
+              aria-labelledby="headingTwo"
+              data-parent="#accordianExample"
+            >
+              <div class="card-body">
+                <ul>
+                  <li>Temperature :<span id="day2-temp"></span></li>
+                  <li>Min-Temp :<span id="day2-min"></span></li>
+                  <li>Max-Temp :<span id="day2-max"></span></li>
+                  <li>Humidity :<span id="day2-humd"></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="clearfix mb-0">
+                <a
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  <span id="nextdt-3"> </span> <i class="fas fa-angle-down"></i>
+                </a>
+              </h2>
+            </div>
+            <div
+              id="collapseThree"
+              class="collapse"
+              aria-labelledby="headingThree"
+              data-parent="#accordianExample"
+            >
+              <div class="card-body">
+                <ul>
+                  <li>Temperature :<span id="day3-temp"></span></li>
+                  <li>Min-Temp :<span id="day3-min"></span></li>
+                  <li>Max-Temp :<span id="day3-max"></span></li>
+                  <li>Humidity :<span id="day3-humd"></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h2 class="clearfix mb-0">
+                <a
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapseFour"
+                  aria-expanded="false"
+                  aria-controls="collapseFour"
+                >
+                  <span id="nextdt-4"> </span> <i class="fas fa-angle-down"></i>
+                </a>
+              </h2>
+            </div>
+            <div
+              id="collapseFour"
+              class="collapse"
+              aria-labelledby="headingFour"
+              data-parent="#accordianExample"
+            >
+              <div class="card-body">
+                <ul>
+                  <li>Temperature :<span id="day4-temp"></span></li>
+                  <li>Min-Temp :<span id="day4-min"></span></li>
+                  <li>Max-Temp :<span id="day4-max"></span></li>
+                  <li>Humidity :<span id="day4-humd"></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFive">
+              <h2 class="clearfix mb-0">
+                <a
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapseFive"
+                  aria-expanded="false"
+                  aria-controls="collapseFive"
+                >
+                  <span id="nextdt-5"> </span> <i class="fas fa-angle-down"></i>
+                </a>
+              </h2>
+            </div>
+            <div
+              id="collapseFive"
+              class="collapse"
+              aria-labelledby="headingFive"
+              data-parent="#accordianExample"
+            >
+              <div class="card-body">
+                <ul>
+                  <li>Temperature :<span id="day5-temp"></span></li>
+                  <li>Min-Temp :<span id="day5-min"></span></li>
+                  <li>Max-Temp :<span id="day5-max"></span></li>
+                  <li>Humidity :<span id="day5-humd"> </span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--**** Scripts****-->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
     <script src="script.js"></script>
-</body>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

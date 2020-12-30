@@ -1,38 +1,74 @@
-*{
-  box-sizing: border-box;
-  
-}
-
 body {
-  
-  font-size: 15px;
-  font-family: "Open Sans Condensed", sans-serif;
-  color: black;
-  
+  font-family: "Ubuntu";
+  font-weight: lighter;
 }
-
-h3{
-  font-weight: bold;
+.banner {
+  background-color: #090218;
+  padding: 2.5%;
   text-align: center;
-  background-color: #9e9795;
-  
+  color: white;
+}
+.banner-text {
+  font-family: "Ubuntu";
+  font-weight: bolder;
+}
+.form-container {
+  padding: 2%;
+  background-color: #ddd9ed;
+  margin-top: 1px;
+}
+.form {
+  justify-content: center;
+}
+.history {
+  justify-content: center;
+  font-weight: 500;
+}
+.history-btn {
+  height: 2.2rem;
+  text-align: center;
+}
+.history-para {
+  padding-top: 3%;
 }
 
-body {
-  font-family: sans-serif;
-  background-image: url(https://cdn.pixabay.com/photo/2015/06/08/15/06/lightning-801866__480.jpg);
-  background-size: cover;
+.temp-wrapper {
+  margin-top: 1px;
+  background-color: #47464a;
+  color: white;
+  padding: 1.5% 7%;
 }
-.forecast{
-  
-  font-size: 0.8em;
+.temp-item {
+  padding: 0%;
 }
-span{
-  font-size: 1em;
+.current-banner {
+  text-align: center;
+  font-family: "Ubuntu";
+  font-weight: normal;
+  font-size: 1.5rem;
 }
-li:hover{
-  background-color: gold;
-  text-decoration: underline;
-  border-radius: 2px;
+.accordion-wrapper {
+  padding: 5%;
+  justify-content: center;
+  color: black;
+}
+.accordion-section {
+  margin-top: 1px;
+  background-color: #47464a;
+}
+.accordian-banner {
+  color: white;
+}
+a {
+  width: 100%;
+  padding: 10%;
 }
 
+.card {
+  width: auto;
+}
+@media (max-width: 500px) {
+  .banner-text {
+    font-size: 1.6rem;
+  }
+}
